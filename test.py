@@ -34,16 +34,6 @@ def process_document(project_id: str, location: str,
         result = documentai_client.process_document(request=request)
  
         return result.document
- 
-# ドキュメントAIの応答を解析してJSONを生成
-# def create_json_from_response(response):
-#     json_data = {}
-#     for entity in response[0].pages.entities:
-#         print(entity)
-#         key = entity.normalized_value.text
-#         value = entity.text_anchor.text.strip()
-#         json_data[key] = value
-#     return json_data
 
 def create_json_from_response(document):
     json_data = {}
@@ -58,8 +48,8 @@ def create_json_from_response(document):
             normalized_value = entity.normalized_value.text
         else:
             normalized_value = None
-        # normalized_value = entity.normalized_value.text if entity.HasField('normalized_value') else None
         # print(normalized_value)
+        
         if entity_type not in json_data:
             json_data[entity_type] = {}
         
@@ -100,14 +90,15 @@ def main():
     print("Document processing complete.")
     # print(document)
     print(results)
+
     # 保存するJSONファイルのパスを指定
-    output_file_path = 'output.json'
+    # output_file_path = 'output.json'
+    # # resultsをJSONファイルに保存
+    # with open(output_file_path, 'w', encoding='utf-8') as json_file:
+    #     json.dump(results, json_file, ensure_ascii=False, indent=4)
+    # print(f'Results saved to {output_file_path}')
 
-    # resultsをJSONファイルに保存
-    with open(output_file_path, 'w', encoding='utf-8') as json_file:
-        json.dump(results, json_file, ensure_ascii=False, indent=4)
-
-    print(f'Results saved to {output_file_path}')
+    return results
  
 if __name__ == "__main__":
     main()

@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "document-api"
+version = "0.1.0"
+description = ""
+authors = ["iitos"]
+readme = "README.md"
+packages = [{include = "document_api"}]
+
+[tool.poetry.dependencies]
+python = "3.9.12"
+google-cloud-documentai = "^2.18.0"
+python-dotenv = "^1.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

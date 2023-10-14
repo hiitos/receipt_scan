@@ -1,0 +1,7 @@
+logs/
+.env
+__pycache__/
+.DS_Store
+output.json
+test*.jpg
+gcp-secret-key/
